@@ -1,5 +1,5 @@
 import React from "react";
-import removeUser from "../../actions/removeUser";
+import removeUser from "../../redux/actions/removeUser";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

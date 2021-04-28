@@ -4,7 +4,7 @@ import Profile from "./components/Profile/Profile";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import getUsers from "./actions/getUsers";
+import getUsers from "./redux/actions/getUsers";
 import Header from "./components/Header/Header";
 import AddUser from "./components/AddUser/AddUser";
 

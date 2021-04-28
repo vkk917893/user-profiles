@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSmile } from "@fortawesome/free-solid-svg-icons";
-import addUser from "../../actions/addUser";
+import addUser from "../../redux/actions/addUser";
 import "./AddUser.css";
 
 const AddUser = ({ history }) => {

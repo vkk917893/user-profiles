@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { createStore } from "redux";
-import rootReducer from "./reducers/rootReducer";
+import rootReducer from "./redux/reducers/rootReducer";
 import { Provider } from "react-redux";
 
 const reduxDevtools =

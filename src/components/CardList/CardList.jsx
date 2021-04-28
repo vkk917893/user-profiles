@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import UserCard from "../UserCard/UserCard";
-import setActiveUser from "../../actions/setactiveUser";
+import setActiveUser from "../../redux/actions/setactiveUser";
 
 const CardList = ({ history }) => {
   const users = useSelector((state) => state.users.userData);
