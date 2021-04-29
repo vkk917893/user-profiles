@@ -3,6 +3,7 @@ import {
   ADD_USERS,
   REMOVE_USERS,
   SET_ACTIVE_USERS,
+  EDIT_USERS,
 } from "../constants";
 
 const initialState = {
@@ -12,6 +13,13 @@ const initialState = {
 
 const users = (state = initialState, action) => {
   switch (action.type) {
+    case EDIT_USERS:
+      return {
+        ...state,
+        userData: state.userData.map((user) =>
+          user.id === action.payload.id ? action.payload : user
+        ),
+      };
     case GET_USERS: {
       return { ...state, userData: [...action.payload] };
     }

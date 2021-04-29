@@ -17,3 +17,12 @@
   width: 25rem !important;
   font-size: 1rem;
 }
+
+.edit-profile-input {
+  display: inline;
+}
+.edit-btn {
+  float: right;
+  padding-top: 0;
+  padding-bottom: 0;
+}

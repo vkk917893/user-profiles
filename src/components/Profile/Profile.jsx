@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Card, ListGroup, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,14 +6,21 @@ import {
   faPhoneVolume,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./Profile.css";
+import edituser from "../../redux/actions/editUser";
 
 const Profile = ({ history }) => {
   const user = useSelector((state) => state.users.activeUser);
   if (!user?.id) {
     history.push("/");
   }
+  const dispatch = useDispatch();
+
+  const [isEditPhone, setEditPhone] = useState(false);
+  const [isEditWebsite, setEditWebsite] = useState(false);
+  const [isEditEmail, setEditEmail] = useState(false);
+  let EditedUser = user;
   return user.id ? (
     <Container>
       <div className="profileContent">
@@ -29,7 +36,32 @@ const Profile = ({ history }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <FontAwesomeIcon icon={faEnvelope} color="steelblue" size="lg" />{" "}
-              {user.email}
+              {isEditEmail ? (
+                <input
+                  id="email"
+                  type="text"
+                  className="edit-profile-input"
+                  name="email"
+                  placeholder={user.email}
+                  onChange={(event) => {
+                    EditedUser.email = event.target.value;
+                  }}
+                ></input>
+              ) : (
+                user.email
+              )}
+              <Button
+                variant={isEditEmail ? "success" : "secondary"}
+                className="edit-btn btn-sm"
+                onClick={() => {
+                  isEditEmail
+                    ? dispatch(edituser(EditedUser))
+                    : setEditEmail(true);
+                  setEditEmail(!isEditEmail);
+                }}
+              >
+                {isEditEmail ? "Submit" : "Edit"}
+              </Button>
             </ListGroup.Item>
             <ListGroup.Item>
               <FontAwesomeIcon
@@ -37,11 +69,61 @@ const Profile = ({ history }) => {
                 color="steelblue"
                 size="lg"
               />{" "}
-              {user.phone}
+              {isEditPhone ? (
+                <input
+                  id="phone"
+                  type="text"
+                  className="edit-profile-input"
+                  name="phone"
+                  placeholder={user.phone}
+                  onChange={(event) => {
+                    EditedUser.phone = event.target.value;
+                  }}
+                ></input>
+              ) : (
+                user.phone
+              )}
+              <Button
+                variant={isEditPhone ? "success" : "secondary"}
+                className="edit-btn btn-sm"
+                onClick={() => {
+                  isEditPhone
+                    ? dispatch(edituser(EditedUser))
+                    : setEditPhone(true);
+                  setEditPhone(!isEditPhone);
+                }}
+              >
+                {isEditPhone ? "Submit" : "Edit"}
+              </Button>
             </ListGroup.Item>
             <ListGroup.Item>
               <FontAwesomeIcon icon={faGlobe} color="steelblue" size="lg" />{" "}
-              {user.website}
+              {isEditWebsite ? (
+                <input
+                  id="website"
+                  type="text"
+                  className="edit-profile-input"
+                  name="website"
+                  placeholder={user.website}
+                  onChange={(event) => {
+                    EditedUser.website = event.target.value;
+                  }}
+                ></input>
+              ) : (
+                user.website
+              )}
+              <Button
+                variant={isEditWebsite ? "success" : "secondary"}
+                className="edit-btn btn-sm"
+                onClick={() => {
+                  isEditWebsite
+                    ? dispatch(edituser(EditedUser))
+                    : setEditWebsite(true);
+                  setEditWebsite(!isEditWebsite);
+                }}
+              >
+                {isEditWebsite ? "Submit" : "Edit"}
+              </Button>
             </ListGroup.Item>
             <ListGroup.Item>
               <Button

@@ -17,7 +17,7 @@ function App() {
         dispatch(getUsers(response.data));
       },
       (error) => {
-        console.log(error);
+        alert("something went wrong");
       }
     );
   }, [dispatch]);
