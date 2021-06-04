@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import AddUser from "../AddUser/AddUser";
+import Modal from "../Modal/Modal.js";
 import "./Header.css";
 
 const Header = () => {
   const history = useHistory();
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false)
+  }
+
   return (
     <>
       <Navbar bg="dark" variant="dark" className="header">
@@ -19,10 +28,13 @@ const Header = () => {
         <Nav>
           <Button
             variant="outline-warning"
-            onClick={() => history.push("/addUser")}
+            onClick={() => setShow(true)}
           >
             Add User
           </Button>
+          <Modal show={show} handleClose={handleClose} title="Add user">
+            <AddUser handleClose={handleClose}/>
+          </Modal>
         </Nav>
       </Navbar>
     </>

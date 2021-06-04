@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import UserCard from "../UserCard/UserCard";
 import setActiveUser from "../../redux/actions/setactiveUser";
+import Modal from "../Modal/Modal";
+import Profile from "../Profile/Profile";
 
 const CardList = ({ history }) => {
   const users = useSelector((state) => state.users.userData);
   const dispatch = useDispatch();
 
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => {
+    setShow(false)
+  }
+
   const selectActive = (id) => {
     dispatch(setActiveUser(id));
-    history.push("/profile");
+
+    setShow(true)
+    // history.push("/profile");
   };
 
   return (
@@ -32,6 +42,9 @@ const CardList = ({ history }) => {
           );
         })}
       </Row>
+      <Modal show={show} handleClose={handleClose} title="Edit user profiles">
+        <Profile handleClose={handleClose}/>
+      </Modal>
     </Container>
   );
 };

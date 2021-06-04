@@ -6,7 +6,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import getUsers from "./redux/actions/getUsers";
 import Header from "./components/Header/Header";
-import AddUser from "./components/AddUser/AddUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +20,7 @@ function App() {
       }
     );
   }, [dispatch]);
+  
   return (
     <>
       <Header />
@@ -28,7 +28,6 @@ function App() {
         <Switch>
           <Route path="/" exact component={CardList} />
           <Route path="/profile" component={Profile} />
-          <Route path="/addUser" component={AddUser} />
         </Switch>
       </div>
     </>

@@ -6,7 +6,7 @@ import { faSmile } from "@fortawesome/free-solid-svg-icons";
 import addUser from "../../redux/actions/addUser";
 import "./AddUser.css";
 
-const AddUser = ({ history }) => {
+const AddUser = ({ handleClose }) => {
   const dispatch = useDispatch();
   const [userId, setUserId] = useState(() =>
     Math.floor(Math.random() * 100000)
@@ -27,7 +27,7 @@ const AddUser = ({ history }) => {
         website: website,
       };
       dispatch(addUser(newUserData));
-      history.push("/");
+      handleClose();
     } else {
       setError(true);
     }

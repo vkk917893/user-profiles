@@ -10,10 +10,11 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Profile.css";
 import edituser from "../../redux/actions/editUser";
 
-const Profile = ({ history }) => {
+const Profile = ({ handleClose }) => {
   const user = useSelector((state) => state.users.activeUser);
+
   if (!user?.id) {
-    history.push("/");
+    handleClose()
   }
   const dispatch = useDispatch();
 
@@ -129,7 +130,8 @@ const Profile = ({ history }) => {
               <Button
                 variant="primary"
                 className="userCardButton"
-                onClick={() => history.push("/")}
+                // onClick={() => history.push("/")}
+                onClick={handleClose}
               >
                 Back to Home
               </Button>
