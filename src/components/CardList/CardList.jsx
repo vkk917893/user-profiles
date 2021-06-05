@@ -6,7 +6,7 @@ import setActiveUser from "../../redux/actions/setactiveUser";
 import Modal from "../Modal/Modal";
 import Profile from "../Profile/Profile";
 
-const CardList = ({ history }) => {
+const CardList = ({ searchValue }) => {
   const users = useSelector((state) => state.users.userData);
   const dispatch = useDispatch();
 
@@ -20,13 +20,14 @@ const CardList = ({ history }) => {
     dispatch(setActiveUser(id));
 
     setShow(true)
-    // history.push("/profile");
   };
+
+  const displayableUsers = users.filter(el => el.name.toLowerCase().includes(searchValue.toLowerCase()))
 
   return (
     <Container>
       <Row xs={1} sm={2} md={3} lg={4}>
-        {users.map((ele) => {
+        {displayableUsers.map((ele) => {
           return (
             <Col key={ele.id}>
               <UserCard

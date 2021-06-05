@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav, Button, Form, FormControl } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import AddUser from "../AddUser/AddUser";
 import Modal from "../Modal/Modal.js";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ handleSearchChange }) => {
   const history = useHistory();
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-    setShow(false)
-  }
+    setShow(false);
+  };
 
   return (
     <>
@@ -26,14 +26,14 @@ const Header = () => {
           </Nav.Link>
         </Nav>
         <Nav>
-          <Button
-            variant="outline-warning"
-            onClick={() => setShow(true)}
-          >
+          <Form inline>
+            <FormControl onChange={(e) => handleSearchChange(e.target.value)} type="text" placeholder="Search for username" className="mr-sm-2" />
+          </Form>
+          <Button variant="outline-warning" onClick={() => setShow(true)}>
             Add User
           </Button>
           <Modal show={show} handleClose={handleClose} title="Add user">
-            <AddUser handleClose={handleClose}/>
+            <AddUser handleClose={handleClose} />
           </Modal>
         </Nav>
       </Navbar>
