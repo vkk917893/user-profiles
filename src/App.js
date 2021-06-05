@@ -33,7 +33,6 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" exact render={() => <CardList searchValue={searchValue}/>} />
-          <Route path="/profile" component={Profile} />
         </Switch>
       </div>
     </>
