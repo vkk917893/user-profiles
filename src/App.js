@@ -6,15 +6,16 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import getUsers from "./redux/actions/getUsers";
 import Header from "./components/Header/Header";
+import { Navbar } from "react-bootstrap";
 
 function App() {
   const dispatch = useDispatch();
 
-  const [searchValue,  setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const handleSearchChange = (value) => {
     setSearchValue(value);
-  }
+  };
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/users").then(
@@ -26,15 +27,20 @@ function App() {
       }
     );
   }, [dispatch]);
-  
+
   return (
     <>
-      <Header handleSearchChange={handleSearchChange}/>
+      <Header handleSearchChange={handleSearchChange} />
       <div className="App">
         <Switch>
-          <Route path="/" exact render={() => <CardList searchValue={searchValue}/>} />
+          <Route
+            path="/"
+            exact
+            render={() => <CardList searchValue={searchValue} />}
+          />
         </Switch>
       </div>
+      <Navbar fixed="bottom" bg="dark" variant="dark" />
     </>
   );
 }

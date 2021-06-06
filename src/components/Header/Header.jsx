@@ -4,7 +4,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Navbar, Nav, Button, Form, FormControl } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import AddUser from "../AddUser/AddUser";
-import Modal from "../Modal/Modal.js";
+import ContentModal from "../Modal/ContentModal.js";
 import "./Header.css";
 
 const Header = ({ handleSearchChange }) => {
@@ -32,9 +32,9 @@ const Header = ({ handleSearchChange }) => {
           <Button variant="outline-warning" onClick={() => setShow(true)}>
             Add User
           </Button>
-          <Modal show={show} handleClose={handleClose} title="Add user">
+          <ContentModal show={show} handleClose={handleClose} title="Add user">
             <AddUser handleClose={handleClose} />
-          </Modal>
+          </ContentModal>
         </Nav>
       </Navbar>
     </>

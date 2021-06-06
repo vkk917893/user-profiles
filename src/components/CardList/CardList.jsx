@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import UserCard from "../UserCard/UserCard";
 import setActiveUser from "../../redux/actions/setactiveUser";
-import Modal from "../Modal/Modal";
+import ContentModal from "../Modal/ContentModal";
 import Profile from "../Profile/Profile";
 
 const CardList = ({ searchValue }) => {
@@ -43,9 +43,9 @@ const CardList = ({ searchValue }) => {
           );
         })}
       </Row>
-      <Modal show={show} handleClose={handleClose} title="Edit user profiles">
+      <ContentModal show={show} handleClose={handleClose} title="Edit user profiles">
         <Profile handleClose={handleClose}/>
-      </Modal>
+      </ContentModal>
     </Container>
   );
 };
