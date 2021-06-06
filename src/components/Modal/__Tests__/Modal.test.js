@@ -1,12 +1,11 @@
-
 import React from "react";
 import { shallow } from "../../../enzyme";
-import {Modal} from "react-bootstrap";
-import ContentModal from "../Modal"
+import { Modal } from "react-bootstrap";
+import ContentModal from "../ContentModal";
 
 describe("Modal tests", () => {
-    it("Modal renders without crashing", () => {
-      const wrapper = shallow(<ContentModal />);
-      expect(wrapper.find(Modal)).toHaveLength(1);
-    });
-})
+  it("Modal renders without crashing", () => {
+    const wrapper = shallow(<ContentModal />);
+    expect(wrapper.find(Modal)).toHaveLength(1);
+  });
+});
