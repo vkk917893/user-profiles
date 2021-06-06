@@ -107,7 +107,7 @@ const Profile = ({ handleClose }) => {
                   name="website"
                   placeholder={user.website}
                   onChange={(event) => {
-                    EditedUser.website = event.target.value;
+                    EditedUser = event.target.value;
                   }}
                 ></input>
               ) : (
