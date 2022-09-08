@@ -1,0 +1,25 @@
+.addUserDetails {
+  padding: 10px;
+}
+.addUserDetailsError {
+  color: red;
+}
+
+.addUserImage {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addUserContent {
+  width: 100%;
+  padding: 10px;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
